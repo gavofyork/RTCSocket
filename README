@@ -1,0 +1,19 @@
+RTCSocket: No-nonsense RTC P2P socket-like connection in Javascript.
+By Gav Wood, 2013 <i@gavwood.com>
+Licenced under the GNU GPL version 2.0
+
+No connection wrangling required!
+
+Example:
+
+// Browser 1:
+var s = new RTCSocket();
+var id = s.listen(function(f, o){ s.accept(f, o, console.log); } );
+
+// Browser 2:
+var s = new RTCSocket();
+s.connect(id, recv, console.log);
+
+// Either browser
+if (s.isOpen()) s.send("Hello");	// other browser logs an event {data:'Hello'} 
+
